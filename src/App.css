@@ -3,6 +3,10 @@ body {
     padding: 20px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 a {
     text-decoration: none;
     font-weight: 700;
