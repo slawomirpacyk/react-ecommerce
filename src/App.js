@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Header from './components/header/header';
@@ -45,7 +45,15 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} /> 
-          <Route path='/login' component={SignInAndUp} />
+          <Route 
+            exact 
+            path='/login' 
+            render={() => 
+              this.props.currentUser 
+              ? (<Redirect to='/' />)
+              : (<SignInAndUp />)
+            }
+          />
         </Switch>
       </div>
     );
